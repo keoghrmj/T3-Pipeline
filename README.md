@@ -77,19 +77,19 @@ The pipeline loads data into the following schema:
 
 with the following tables:
 
-FACT_Transaction (
+- FACT_Transaction (
     truck_id INT,
     payment_method_id INT,
     total FLOAT,
     at TIMESTAMP
 )
 
-DIM_Payment_Method (
+- DIM_Payment_Method (
     payment_method_id INT,
     payment_method VARCHAR
 )
 
-DIM_Truck (
+- DIM_Truck (
     truck_id INT,
     truck_name TEXT,
     truck_description TEXT,
