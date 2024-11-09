@@ -1,16 +1,17 @@
 # T3-Pipeline
-## Truck Transaction ETL 
+## ETL Pipeline 
 ### Overview
 This project implements an ETL (Extract, Transform, Load) pipeline for processing truck transaction data. The pipeline extracts CSV files from an AWS S3 bucket, transforms and combines the data, and loads it into a Redshift database.
 
-# Project Structure:
-├── Extract.py          # Handles data extraction from S3
-├── Transform.py        # Combines and cleans CSV files
-├── Load.py            # Loads data into Redshift
-├── .env               # Environment variables (not included)
-├── downloaded_files/  # Temporary storage for downloaded CSV files
-└── Cleaned_files/    # Storage for processed CSV files
-Prerequisites
+### Project Structure:
+- Extract.py          # Handles data extraction from S3
+- Transform.py        # Combines and cleans CSV files
+- Load.py            # Loads data into Redshift
+- .env               # Environment variables (not included)
+- downloaded_files/  # Temporary storage for downloaded CSV files
+- Cleaned_files/    # Storage for processed CSV files
+
+### Prerequisites
 
 Python 3.x
 AWS Account with S3 access
@@ -24,17 +25,17 @@ python-dotenv
 redshift_connector
 
 
-
-Environment Variables
+### Environment Variables
 Create a .env file with the following variables:
-CopyAWS_ACCESS_KEY_ID=your_aws_access_key
-AWS_SECRET_ACCESS_KEY=your_aws_secret_key
-DB_HOST=your_redshift_host
-DB_NAME=your_database_name
-DB_USER=your_database_user
-DB_PASSWORD=your_database_password
-DB_PORT=your_database_port
-Data Pipeline Process
+- AWS_ACCESS_KEY_ID=your_aws_access_key
+- AWS_SECRET_ACCESS_KEY=your_aws_secret_key
+- DB_HOST=your_redshift_host
+- DB_NAME=your_database_name
+- DB_USER=your_database_user
+- DB_PASSWORD=your_database_password
+- DB_PORT=your_database_port
+- Data Pipeline Process
+
 1. Extract (Extract.py)
 
 Connects to AWS S3 using provided credentials
@@ -61,15 +62,23 @@ Maps payment types to payment method IDs
 Uploads transformed data to the FACT_Transaction table
 Handles data type conversions and validations
 
-Usage
+### Usage
 Run the entire pipeline:
-bashCopypython Load.py
-Or run individual components:
-bashCopypython Extract.py  # Only download files
-python Transform.py  # Only process files
-Database Schema
+
+` python Load.py `
+
+Or run individual scripts:
+
+` python Extract.py ` # Only download files
+` python Transform.py ` # Only process files
+
+### Database Schema
 The pipeline loads data into the following schema:
-sqlCopy-- keogh_jokhan_schema
+
+ - keogh_jokhan_schema
+
+with the following tables:
+
 FACT_Transaction (
     truck_id INT,
     payment_method_id INT,
@@ -81,7 +90,16 @@ DIM_Payment_Method (
     payment_method_id INT,
     payment_method VARCHAR
 )
-Error Handling
+
+DIM_Truck (
+    truck_id INT,
+    truck_name TEXT,
+    truck_description TEXT,
+    has_card_reader BOOLEAN,
+    fsa_rating SMALLINT,
+)
+
+### Error Handling
 
 The pipeline includes checks for:
 
@@ -92,7 +110,7 @@ Database connection issues
 
 Errors are logged with appropriate messages
 
-Notes
+### Notes
 
 The pipeline is designed to process data from the last 3 hours
 Files are automatically cleaned up after processing
