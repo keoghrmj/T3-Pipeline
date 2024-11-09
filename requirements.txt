@@ -1,0 +1,7 @@
+boto3
+pandas
+redshift_connector
+psycopg2-binary
+python-dotenv
+pylint
+fastparquet
