@@ -1,6 +1,6 @@
 # T3-Pipeline
 ## Truck Transaction ETL 
-## Overview
+### Overview
 This project implements an ETL (Extract, Transform, Load) pipeline for processing truck transaction data. The pipeline extracts CSV files from an AWS S3 bucket, transforms and combines the data, and loads it into a Redshift database.
 
 # Project Structure:
