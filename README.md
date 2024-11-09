@@ -36,6 +36,7 @@ Create a .env file with the following variables:
 - DB_PORT=your_database_port
 - Data Pipeline Process
 
+### Scripts 
 1. Extract (Extract.py)
 
 Connects to AWS S3 using provided credentials
