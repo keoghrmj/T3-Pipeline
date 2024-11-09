@@ -48,12 +48,9 @@ Transform (`Transform.py`)
 
 - Combines multiple truck CSV files into a single file
 - Performs data cleaning operations:
-
 - Removes invalid total amounts,
 - Ensures totals are between 0.0 and 100.0
 - Handles missing values
-
-
 - Saves cleaned data to Cleaned_files/combined_truck_data.csv
 
 Load (`Load.py`)
