@@ -37,31 +37,31 @@ Create a .env file with the following variables:
 - Data Pipeline Process
 
 ### Scripts 
-1. Extract (Extract.py)
+Extract (`Extract.py`)
 
-Connects to AWS S3 using provided credentials
-Identifies relevant data files based on current date and time
-Downloads truck transaction CSV files to local storage
-Files are stored in a structured format: trucks/YYYY-MM/DD/HH/
+- Connects to AWS S3 using provided credentials
+- Identifies relevant data files based on current date and time
+- Downloads truck transaction CSV files to local storage
+- Files are stored in a structured format: trucks/YYYY-MM/DD/HH/
 
-2. Transform (Transform.py)
+Transform (`Transform.py`)
 
-Combines multiple truck CSV files into a single file
-Performs data cleaning operations:
+- Combines multiple truck CSV files into a single file
+- Performs data cleaning operations:
 
-Removes invalid total amounts
-Ensures totals are between 0.0 and 100.0
-Handles missing values
+- Removes invalid total amounts,
+- Ensures totals are between 0.0 and 100.0
+- Handles missing values
 
 
-Saves cleaned data to Cleaned_files/combined_truck_data.csv
+- Saves cleaned data to Cleaned_files/combined_truck_data.csv
 
-3. Load (Load.py)
+Load (`Load.py`)
 
-Establishes connection to Redshift database
-Maps payment types to payment method IDs
-Uploads transformed data to the FACT_Transaction table
-Handles data type conversions and validations
+- Establishes connection to Redshift database
+- Maps payment types to payment method IDs
+- Uploads transformed data to the FACT_Transaction table
+- Handles data type conversions and validations
 
 ### Usage
 Run the entire pipeline:
